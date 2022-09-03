@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:flutter_audio/screens/commons/player_buttons.dart';
 
 class Player extends StatefulWidget {
   @override
@@ -7,14 +8,13 @@ class Player extends StatefulWidget {
 }
 
 class _PlayerState extends State<Player> {
-  AudioPlayer _audioPlayer;
+  late AudioPlayer _audioPlayer;
 
   @override
   void initState() {
     super.initState();
     _audioPlayer = AudioPlayer();
 
-    // Set a sequence of audio sources that will be played by the audio player.
     _audioPlayer
         .setAudioSource(ConcatenatingAudioSource(children: [
       AudioSource.uri(Uri.parse(
@@ -31,14 +31,20 @@ class _PlayerState extends State<Player> {
   }
 
   @override
-  void dispose() {
-    _audioPlayer.dispose();
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: PlayerButtons(
+          _audioPlayer,
+          key: const Key('a'),
+        ),
+      ),
+    );
   }
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
   }
 }
