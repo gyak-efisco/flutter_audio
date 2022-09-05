@@ -2,8 +2,8 @@ import 'package:audio_session/audio_session.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_audio/ControlButtons.dart';
-import 'package:flutter_audio/static/audioSource.dart';
+import 'package:flutter_audio/control_buttons.dart';
+import 'package:flutter_audio/static/audio_source.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter_audio/common.dart';
 import 'package:rxdart/rxdart.dart';
@@ -20,7 +20,6 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   late AudioPlayer _player;
   final _playlist = concatenatedAudioSources;
-  int _addedCount = 0;
   final _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   @override
